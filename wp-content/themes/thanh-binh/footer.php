@@ -1,0 +1,9 @@
+<?php if (!defined('ABSPATH')) { exit; } ?>
+<footer class="site-footer"><div class="container footer-grid"><div><?php tb_brand(); ?><p><?php echo esc_html(tb_value('footer_text')); ?></p><span class="footer-note">Đồng hành cùng từng kiện hàng.</span></div><div><h3>Khám phá</h3><a href="<?php echo esc_url(home_url('/#gioi-thieu')); ?>">Về chúng tôi</a><a href="<?php echo esc_url(home_url('/#san-pham')); ?>">Sản phẩm pallet</a><a href="<?php echo esc_url(home_url('/#quy-trinh')); ?>">Quy trình làm việc</a><a href="<?php echo esc_url(home_url('/#bao-gia')); ?>">Yêu cầu báo giá</a></div><div><h3>Kết nối với chúng tôi</h3>
+<?php if (tb_value('phone')): ?><a href="tel:<?php echo esc_attr(preg_replace('/[^+0-9]/', '', tb_value('phone'))); ?>"><?php echo tb_icon('phone') . esc_html(tb_value('phone')); ?></a><?php endif; ?>
+<?php if (tb_value('email')): ?><a href="mailto:<?php echo esc_attr(tb_value('email')); ?>"><?php echo tb_icon('mail') . esc_html(tb_value('email')); ?></a><?php endif; ?>
+<?php if (tb_value('address')): ?><p><?php echo tb_icon('pin') . esc_html(tb_value('address')); ?></p><?php endif; ?>
+<?php if (!tb_value('phone') && !tb_value('email')): ?><a href="<?php echo esc_url(home_url('/#bao-gia')); ?>">Gửi yêu cầu tư vấn <?php echo tb_icon('arrow'); ?></a><?php endif; ?>
+<?php if (tb_value('zalo')): ?><a href="<?php echo esc_url('https://zalo.me/' . preg_replace('/\D/', '', tb_value('zalo'))); ?>" target="_blank" rel="noopener noreferrer">Trao đổi qua Zalo ↗</a><?php endif; ?>
+</div></div><div class="container footer-bottom"><span>© <?php echo esc_html(wp_date('Y') . ' ' . tb_value('company')); ?>. Bảo lưu mọi quyền.</span><span><?php if (get_privacy_policy_url()): ?><a href="<?php echo esc_url(get_privacy_policy_url()); ?>">Chính sách bảo mật</a><?php endif; ?><span class="footer-dot">·</span>Gỗ mộc. Giá trị bền lâu.</span></div></footer>
+<?php wp_footer(); ?></body></html>

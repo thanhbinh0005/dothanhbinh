@@ -1,0 +1,7 @@
+{
+  "name": "thanh-binh-wordpress",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {"test": "node tests/e2e.cjs", "package": "python3 scripts/package.py"},
+  "devDependencies": {"playwright": "1.62.1"}
+}

@@ -1,0 +1,50 @@
+name: thanh-binh-wood
+services:
+  db:
+    image: mariadb:11.4@sha256:250e1609e93c0e6aecf64bfbab2d84d5e89d2481540fe77447ff6c855c3b1873
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: ${DB_PASSWORD:?Run scripts/setup.sh first}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Run scripts/setup.sh first}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  wordpress:
+    image: wordpress:php8.3-apache@sha256:d42f63cb89ad0eab272c4b393164e63830d0df270009907919f7dcce52b1a20b
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${WP_PORT:-8080}:80"
+    environment: &wp_env
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('DISALLOW_FILE_EDIT', true);
+        define('WP_ENVIRONMENT_TYPE', 'local');
+    volumes: &wp_volumes
+      - wp_data:/var/www/html
+      - ./wp-content/themes/thanh-binh:/var/www/html/wp-content/themes/thanh-binh:ro
+      - ./wp-content/plugins/thanh-binh-orders:/var/www/html/wp-content/plugins/thanh-binh-orders:ro
+  cli:
+    image: wordpress:cli-php8.3@sha256:661db880e953da051abcac6c0a769767b995a82cd52101c003ca7438dd427d7d
+    profiles: [tools]
+    user: '33:33'
+    depends_on:
+      db:
+        condition: service_healthy
+    environment: *wp_env
+    volumes: *wp_volumes
+    entrypoint: [wp, --path=/var/www/html]
+volumes:
+  db_data:
+  wp_data:

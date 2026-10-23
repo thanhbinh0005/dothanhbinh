@@ -1,0 +1,1 @@
+<?php get_header(); ?><main id="main" class="section"><div class="container narrow"><p class="eyebrow">404 / KHÔNG TÌM THẤY</p><h1>Trang này chưa có ở đây.</h1><p>Bạn có thể trở về trang chủ để xem sản phẩm và gửi yêu cầu báo giá.</p><a class="button" href="<?php echo esc_url(home_url('/')); ?>">Về trang chủ <?php echo tb_icon('arrow'); ?></a></div></main><?php get_footer(); ?>
