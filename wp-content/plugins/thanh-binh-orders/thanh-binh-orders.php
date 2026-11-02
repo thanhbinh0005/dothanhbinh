@@ -2,11 +2,12 @@
 /**
  * Plugin Name: Thanh Bình — Sản phẩm & Yêu cầu báo giá
  * Description: Quản lý pallet và tiếp nhận yêu cầu báo giá riêng tư trong WordPress.
- * Version: 1.0.0
- * Requires PHP: 8.1
+ * Version: 1.0.1
+ * Requires at least: 6.6
+ * Requires PHP: 7.4
  */
 if (!defined('ABSPATH')) { exit; }
-add_action('init', function () {
+function tb_register_content_types() {
     register_post_type('tb_product', [
         'labels' => ['name' => 'Sản phẩm pallet', 'singular_name' => 'Sản phẩm', 'add_new_item' => 'Thêm sản phẩm', 'edit_item' => 'Sửa sản phẩm'],
         'public' => true, 'show_in_rest' => true, 'menu_icon' => 'dashicons-products',
@@ -25,8 +26,9 @@ add_action('init', function () {
         'capabilities' => ['edit_post' => 'manage_options', 'read_post' => 'manage_options', 'delete_post' => 'manage_options', 'edit_posts' => 'manage_options', 'edit_others_posts' => 'manage_options', 'publish_posts' => 'manage_options', 'read_private_posts' => 'manage_options', 'delete_posts' => 'manage_options', 'delete_private_posts' => 'manage_options', 'delete_published_posts' => 'manage_options', 'delete_others_posts' => 'manage_options', 'edit_private_posts' => 'manage_options', 'edit_published_posts' => 'manage_options', 'create_posts' => 'do_not_allow'],
         'map_meta_cap' => false,
     ]);
-});
-register_activation_hook(__FILE__, function () { do_action('init'); flush_rewrite_rules(); });
+}
+add_action('init', 'tb_register_content_types');
+register_activation_hook(__FILE__, function () { tb_register_content_types(); flush_rewrite_rules(); });
 register_deactivation_hook(__FILE__, 'flush_rewrite_rules');
 add_action('add_meta_boxes', function () {
     add_meta_box('tb_product_specs', 'Thông số sản phẩm', function ($post) {

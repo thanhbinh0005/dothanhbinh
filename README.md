@@ -4,6 +4,8 @@ Website tiếng Việt giới thiệu pallet gỗ, chân cục pallet, nhận y�
 
 **Đã chạy:** WordPress 7.1.3, PHP 8.3, MariaDB 11.4. Giao diện hỗ trợ điện thoại; 3 sản phẩm và 3 bài viết khởi tạo. Nội dung, ảnh, logo và liên hệ chỉnh trong quản trị. Yêu cầu báo giá lưu riêng tư, có trạng thái xử lý. Email là kênh thông báo bổ sung, không thay việc lưu yêu cầu.
 
+**Tương thích XAMPP:** plugin và theme bản 1.0.1 hỗ trợ PHP 7.4, bao gồm PHP 7.4.30. Có gói tải riêng `dist/thanh-binh-orders-php74.zip`, `dist/thanh-binh-theme-php74.zip` và bộ đầy đủ `dist/thanh-binh-wordpress-kit-php74.zip`. Xem [cài trên PHP 7.4.30](docs/PHP74-XAMPP.md). Môi trường Docker chính vẫn dùng PHP 8.3.
+
 **Chưa công khai:** chưa triển khai lên hosting hoặc tên miền. Chưa nhập được ảnh gốc từ hội thoại vì ảnh chưa được cung cấp dưới dạng tệp trong workspace; đang dùng các minh họa SVG tự tạo, không phải logo công ty. Xem `content/media/README.md` để nhập ảnh gốc. Chưa cấu hình email/SMTP hoặc thông tin liên hệ theo yêu cầu của chủ website. Chính sách bảo mật cần hoàn thiện theo doanh nghiệp thực tế.
 
 ## Chạy trong môi trường phát triển

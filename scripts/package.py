@@ -2,6 +2,7 @@
 """Build installable WordPress ZIPs containing public code, never runtime secrets."""
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
+from shutil import copyfile
 root = Path(__file__).resolve().parent.parent
 out = root / 'dist'
 out.mkdir(exist_ok=True)
@@ -17,6 +18,9 @@ if not (out / 'thanh-binh-content.xml').exists():
 with ZipFile(out / 'thanh-binh-wordpress-kit.zip', 'w', ZIP_DEFLATED) as z:
     for name in ['thanh-binh-theme.zip', 'thanh-binh-orders.zip', 'thanh-binh-content.xml']:
         z.write(out / name, name)
-    for name in ['TRIEN-KHAI.md', 'QUAN-TRI.md', 'NOI-DUNG-VA-HINH-ANH.md']:
+    for name in ['TRIEN-KHAI.md', 'QUAN-TRI.md', 'NOI-DUNG-VA-HINH-ANH.md', 'PHP74-XAMPP.md']:
         z.write(root / 'docs' / name, 'huong-dan/' + name)
 print('thanh-binh-wordpress-kit.zip')
+for name in ['thanh-binh-orders', 'thanh-binh-theme', 'thanh-binh-wordpress-kit']:
+    copyfile(out / (name + '.zip'), out / (name + '-php74.zip'))
+    print(name + '-php74.zip')

@@ -4,7 +4,12 @@ const {execFileSync} = require('node:child_process');
 const {chromium} = require('playwright');
 const origin = process.env.TEST_BASE_URL || 'http://localhost:8080';
 const marker = 'E2E-PALLET-' + Date.now();
-function wp(code) { return execFileSync('docker', ['compose','run','--rm','-T','cli','eval',code], {encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim(); }
+const composeArgs = ['compose'];
+if (process.env.TEST_COMPOSE_PROJECT) composeArgs.push('-p', process.env.TEST_COMPOSE_PROJECT);
+if (process.env.TEST_COMPOSE_FILES) {
+  for (const file of process.env.TEST_COMPOSE_FILES.split(',')) composeArgs.push('-f', file);
+}
+function wp(code) { return execFileSync('docker', [...composeArgs,'run','--rm','-T','cli','eval',code], {encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim(); }
 const cleanRate = `if (wp_get_environment_type() !== 'local') { WP_CLI::error('Tests require local environment.'); } global $wpdb; foreach ($wpdb->get_col("SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '_transient_tb_rate_%'") as $n) { delete_transient(substr($n,11)); }`;
 const countQuotes = () => Number(wp(`echo count(get_posts(['post_type'=>'tb_quote','post_status'=>'private','numberposts'=>-1,'meta_key'=>'_tb_name','meta_value'=>'${marker}']));`));
 (async () => {
@@ -47,6 +52,8 @@ const countQuotes = () => Number(wp(`echo count(get_posts(['post_type'=>'tb_quot
     await page.locator('#quote-company').fill('Công ty kiểm thử');
     await page.locator('#quote-message').fill('KIỂM THỬ TỰ ĐỘNG — vui lòng bỏ qua.');
     await page.locator('input[name="consent"]').check();
+    const invalidFields = await page.locator('.quote-form :invalid').evaluateAll(fields => fields.map(field => ({name:field.name,message:field.validationMessage})));
+    assert.deepEqual(invalidFields, [], 'Quote form must pass browser validation before submission');
     const submitted = page.waitForResponse(r=>r.url().includes('admin-post.php') && r.request().method()==='POST');
     await page.locator('.submit-quote').click();
     assert.equal((await submitted).status(),200);
@@ -76,7 +83,7 @@ const countQuotes = () => Number(wp(`echo count(get_posts(['post_type'=>'tb_quot
     console.log('PASS anonymous REST and direct URLs cannot read customer requests');
     await page.goto(origin+'/wp-login.php');
     await page.locator('#user_login').fill('siteadmin');
-    await page.locator('#user_pass').fill(fs.readFileSync('.runtime/admin-password','utf8').trim());
+    await page.locator('#user_pass').fill(fs.readFileSync(process.env.TEST_ADMIN_PASSWORD_FILE || '.runtime/admin-password','utf8').trim());
     await page.locator('#wp-submit').click(); await page.waitForURL(/wp-admin/);
     await page.goto(origin+'/wp-admin/post.php?post='+id+'&action=edit');
     assert.ok((await page.locator('#tb_quote_details').innerText()).includes(marker));
@@ -88,10 +95,11 @@ const countQuotes = () => Number(wp(`echo count(get_posts(['post_type'=>'tb_quot
     await page.context().clearCookies();
     await page.goto(origin,{waitUntil:'networkidle'});
     await page.setViewportSize({width:1440,height:1080});
-    fs.mkdirSync('.runtime/screenshots',{recursive:true});
-    await page.screenshot({path:'.runtime/screenshots/desktop.png',fullPage:true});
+    const screenshotDir = process.env.TEST_SCREENSHOT_DIR || '.runtime/screenshots';
+    fs.mkdirSync(screenshotDir,{recursive:true});
+    await page.screenshot({path:screenshotDir+'/desktop.png',fullPage:true});
     await page.setViewportSize({width:390,height:844});
-    await page.screenshot({path:'.runtime/screenshots/mobile.png',fullPage:true});
+    await page.screenshot({path:screenshotDir+'/mobile.png',fullPage:true});
     assert.deepEqual(errors,[]);
     console.log('PASS no browser script errors; desktop and mobile screenshots saved');
   } finally {

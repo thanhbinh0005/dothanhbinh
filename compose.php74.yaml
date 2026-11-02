@@ -1,0 +1,22 @@
+# Use with: docker compose -p thanh-binh-php74 -f compose.yaml -f compose.php74.yaml
+# Separate volumes, database and port; does not replace the PHP 8.3 development site.
+services:
+  wordpress:
+    image: thanh-binh-wordpress:php7.4.30
+    build:
+      context: .
+      dockerfile: docker/php74/Dockerfile
+    ports: !override
+      - "127.0.0.1:8081:80"
+    environment:
+      WORDPRESS_DEBUG: '1'
+      WORDPRESS_CONFIG_EXTRA: |
+        define('DISALLOW_FILE_EDIT', true);
+        define('WP_ENVIRONMENT_TYPE', 'local');
+        define('WP_DEBUG_LOG', '/tmp/thanh-binh-php74-debug.log');
+        define('WP_DEBUG_DISPLAY', false);
+    volumes: !override
+      - wp_data:/var/www/html
+  cli:
+    volumes: !override
+      - wp_data:/var/www/html
