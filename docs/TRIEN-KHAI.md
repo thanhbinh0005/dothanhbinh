@@ -2,9 +2,13 @@
 
 Mã hiện chạy trong môi trường phát triển. Chưa có thao tác xuất bản website hoặc thay đổi tên miền. Liên kết mẫu không được chỉnh sửa.
 
-Nếu đang dùng XAMPP PHP 7.4.30, dùng plugin/theme **1.0.1** theo [hướng dẫn PHP 7.4](PHP74-XAMPP.md). PHP 8.3+ bên dưới là cấu hình đề xuất cho hosting, không phải PHP tối thiểu của plugin/theme.
+Nếu đang dùng XAMPP PHP 7.4.30, dùng plugin/theme **1.1.0** theo [hướng dẫn PHP 7.4](PHP74-XAMPP.md). PHP 8.3+ bên dưới là cấu hình đề xuất cho hosting, không phải PHP tối thiểu của plugin/theme.
 
-## Cách dễ nhất: hosting WordPress có SSL
+## Cài một gói website hoàn chỉnh
+
+Sau khi có WordPress, tải `thanh-binh-website-hoan-chinh-php74.zip` qua mục Plugin, kích hoạt, rồi vào **Thanh Bình → Thiết lập website**. Gói chứa cả theme và nội dung mẫu, không cần nhập XML. [Hướng dẫn đầy đủ](CAI-WEBSITE-HOAN-CHINH.md).
+
+## Cài từng phần trên hosting WordPress có SSL
 
 1. Chuẩn bị hosting hỗ trợ WordPress, PHP 8.3+, MariaDB/MySQL và HTTPS. Cài bản WordPress ổn định, đặt tài khoản quản trị cùng email thật của bạn. Không nhập mật khẩu hosting vào chat hoặc mã nguồn.
 2. Tải lên `dist/thanh-binh-orders.zip` tại Plugin → Cài mới → Tải plugin; kích hoạt.

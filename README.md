@@ -4,9 +4,15 @@ Website tiếng Việt giới thiệu pallet gỗ, chân cục pallet, nhận y�
 
 **Đã chạy:** WordPress 7.1.3, PHP 8.3, MariaDB 11.4. Giao diện hỗ trợ điện thoại; 3 sản phẩm và 3 bài viết khởi tạo. Nội dung, ảnh, logo và liên hệ chỉnh trong quản trị. Yêu cầu báo giá lưu riêng tư, có trạng thái xử lý. Email là kênh thông báo bổ sung, không thay việc lưu yêu cầu.
 
-**Tương thích XAMPP:** plugin và theme bản 1.0.1 hỗ trợ PHP 7.4, bao gồm PHP 7.4.30. Có gói tải riêng `dist/thanh-binh-orders-php74.zip`, `dist/thanh-binh-theme-php74.zip` và bộ đầy đủ `dist/thanh-binh-wordpress-kit-php74.zip`. Xem [cài trên PHP 7.4.30](docs/PHP74-XAMPP.md). Môi trường Docker chính vẫn dùng PHP 8.3.
+**Tương thích XAMPP:** plugin và theme bản 1.1.0 hỗ trợ PHP 7.4, bao gồm PHP 7.4.30. Có gói tải riêng `dist/thanh-binh-orders-php74.zip`, `dist/thanh-binh-theme-php74.zip` và bộ đầy đủ `dist/thanh-binh-wordpress-kit-php74.zip`. Xem [cài trên PHP 7.4.30](docs/PHP74-XAMPP.md). Môi trường Docker chính vẫn dùng PHP 8.3.
 
-**Chưa công khai:** chưa triển khai lên hosting hoặc tên miền. Chưa nhập được ảnh gốc từ hội thoại vì ảnh chưa được cung cấp dưới dạng tệp trong workspace; đang dùng các minh họa SVG tự tạo, không phải logo công ty. Xem `content/media/README.md` để nhập ảnh gốc. Chưa cấu hình email/SMTP hoặc thông tin liên hệ theo yêu cầu của chủ website. Chính sách bảo mật cần hoàn thiện theo doanh nghiệp thực tế.
+**Chưa công khai:** chưa triển khai lên hosting hoặc tên miền. Chưa nhập được ảnh gốc từ hội thoại vì ảnh chưa được cung cấp dưới dạng tệp trong workspace; có ảnh pallet minh họa AI và các SVG tự tạo, không phải ảnh xác thực xưởng hoặc logo gốc của công ty. Xem `content/media/README.md` để nhập ảnh gốc. Chưa cấu hình email/SMTP hoặc thông tin liên hệ theo yêu cầu của chủ website. Chính sách bảo mật cần hoàn thiện theo doanh nghiệp thực tế.
+
+## Cài website hoàn chỉnh trong WordPress
+
+Tải **`dist/thanh-binh-website-hoan-chinh-php74.zip`**, cài ở **Plugin → Cài mới → Tải plugin lên**, kích hoạt, rồi vào **Thanh Bình → Thiết lập website**. Một ZIP đã chứa theme, trang chủ, menu, 3 sản phẩm, 3 bài viết và ảnh đại diện mẫu. Không cần nhập XML. Xem [hướng dẫn cài trọn bộ](docs/CAI-WEBSITE-HOAN-CHINH.md).
+
+Ảnh `dist/pallet-go-ke-hang.jpg` là ảnh minh họa tạo bằng AI theo yêu cầu, dùng làm ảnh đại diện của sản phẩm Pallet gỗ kê hàng. Gói cài tự nhập ảnh này vào Thư viện. Các logo và ảnh nguyên bản gửi trước đó vẫn cần tệp gốc để nhập chính xác.
 
 ## Chạy trong môi trường phát triển
 

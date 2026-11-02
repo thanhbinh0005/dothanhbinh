@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: docker/php74/Dockerfile
     ports: !override
-      - "127.0.0.1:8081:80"
+      - "127.0.0.1:${PHP74_PORT:-8081}:80"
     environment:
       WORDPRESS_DEBUG: '1'
       WORDPRESS_CONFIG_EXTRA: |

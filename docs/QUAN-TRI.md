@@ -1,5 +1,7 @@
 # Sử dụng WordPress
 
+Nếu website chưa có giao diện và bài viết, vào **Thanh Bình → Thiết lập website** sau khi cài gói `thanh-binh-website-hoan-chinh-php74.zip`. Nút này cài và kích hoạt giao diện, thêm trang, menu, sản phẩm, bài viết và ảnh minh họa mẫu. Không cần nhập XML.
+
 Đăng nhập đường dẫn `/wp-admin/` của website bằng tài khoản được tạo trên hosting. Tài khoản phát triển và mật khẩu khởi tạo được mô tả trong README; không dùng lại cho bản công khai.
 
 | Việc cần làm | Nơi thao tác |

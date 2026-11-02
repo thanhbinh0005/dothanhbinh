@@ -1,0 +1,6 @@
+<?php get_header(); ?>
+<main id="main" class="section blog-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">KIẾN THỨC & SẢN PHẨM</p><h1>Hiểu vật liệu.<br>Chọn đúng giải pháp.</h1></div><p>Bài viết về pallet, chân cục và những thông tin hữu ích trước khi đặt hàng.</p></div><div class="blog-grid">
+<?php if (have_posts()): while (have_posts()): the_post(); ?>
+<article class="post-card"><a class="post-cover" href="<?php the_permalink(); ?>"><?php if (has_post_thumbnail()) { the_post_thumbnail('large', ['loading' => 'lazy']); } else { ?><img src="<?php echo esc_url(get_theme_file_uri(get_post_meta(get_the_ID(), '_tb_media_group', true) === 'blocks' ? 'assets/blocks.svg' : 'assets/wood-detail.svg')); ?>" alt="Minh họa vật liệu gỗ" loading="lazy"><?php } ?></a><time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('d.m.Y')); ?></time><h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><p><?php echo esc_html(get_the_excerpt()); ?></p><a class="text-link" href="<?php the_permalink(); ?>">Đọc bài viết <?php echo tb_icon('arrow'); ?></a></article>
+<?php endwhile; else: ?><p>Chưa có bài viết. Bạn có thể thêm nội dung tại mục Bài viết trong quản trị.</p><?php endif; ?></div><div class="blog-pagination"><?php the_posts_pagination(); ?></div></div></main>
+<?php get_footer(); ?>

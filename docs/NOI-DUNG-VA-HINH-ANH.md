@@ -23,3 +23,7 @@ Các bài có nội dung đầy đủ bằng khối WordPress, tóm tắt và đ
 ## Trạng thái ảnh
 
 Đã nhìn thấy ảnh trong hội thoại, nhưng chưa có tệp gốc hoặc mã tải tệp khả dụng trong môi trường. Do đó **chưa nhập logo và ảnh gốc vào Media**; hiện dùng hình minh họa SVG tự tạo và dấu hiệu thương hiệu tạm. Không coi hình minh họa là logo do công ty cung cấp. Cần tải ảnh JPG/PNG/ZIP vào workspace hoặc nhập trực tiếp qua thư viện WordPress. Đường nhập hàng loạt đã chuẩn bị ở `content/media/README.md`.
+
+## Ảnh đại diện và sản phẩm bổ sung trong 1.1.0
+
+Theo yêu cầu tiếp theo, đã tạo ảnh minh họa AI `pallet-go-ke-hang.jpg` cho sản phẩm mẫu **Pallet gỗ kê hàng**. Đây là ảnh được tạo mới, không phải bản thay thế hoặc chỉnh sửa logo/ảnh nguyên bản đã gửi. Bộ cài hoàn chỉnh tự nhập ảnh vào Thư viện và đặt ảnh đại diện; người dùng vẫn có thể thay bằng ảnh thật.

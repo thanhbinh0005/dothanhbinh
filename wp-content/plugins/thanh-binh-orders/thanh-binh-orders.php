@@ -1,12 +1,15 @@
 <?php
 /**
- * Plugin Name: Thanh Bình — Sản phẩm & Yêu cầu báo giá
- * Description: Quản lý pallet và tiếp nhận yêu cầu báo giá riêng tư trong WordPress.
- * Version: 1.0.1
+ * Plugin Name: Thanh Bình Website — Giao diện, sản phẩm & Đặt hàng
+ * Description: Cài website pallet hoàn chỉnh: giao diện, trang chủ, menu, sản phẩm, bài viết và yêu cầu báo giá.
+ * Version: 1.1.0
  * Requires at least: 6.6
  * Requires PHP: 7.4
  */
 if (!defined('ABSPATH')) { exit; }
+define('TB_WEBSITE_VERSION', '1.1.0');
+require_once __DIR__ . '/includes/starter-content.php';
+require_once __DIR__ . '/includes/website-setup.php';
 function tb_register_content_types() {
     register_post_type('tb_product', [
         'labels' => ['name' => 'Sản phẩm pallet', 'singular_name' => 'Sản phẩm', 'add_new_item' => 'Thêm sản phẩm', 'edit_item' => 'Sửa sản phẩm'],

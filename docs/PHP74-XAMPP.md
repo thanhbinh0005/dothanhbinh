@@ -1,17 +1,21 @@
 # Cài plugin và theme trên XAMPP PHP 7.4.30
 
-Bản 1.0.1 khai báo PHP tối thiểu 7.4 cho cả plugin và theme. Yêu cầu WordPress 6.6 trở lên; WordPress cũng cần hỗ trợ PHP đang dùng. Bộ cài giữ nguyên tên thư mục để cập nhật tiếp vào bản đang có và giữ dữ liệu.
+Bản 1.1.0 khai báo PHP tối thiểu 7.4 cho cả plugin và theme. Yêu cầu WordPress 6.6 trở lên; WordPress cũng cần hỗ trợ PHP đang dùng. Bộ cài giữ nguyên tên thư mục để cập nhật tiếp vào bản đang có và giữ dữ liệu.
 
-## Cài trong WordPress
+## Cách cài đầy đủ, chỉ một ZIP
+
+Dùng `thanh-binh-website-hoan-chinh-php74.zip`: cài và kích hoạt ở Plugin, sau đó vào **Thanh Bình → Thiết lập website**. Gói này đã có cả theme, sản phẩm, bài viết và ảnh đại diện; không cần nhập XML. Xem [hướng dẫn từng bước](CAI-WEBSITE-HOAN-CHINH.md).
+
+## Cài từng phần trong WordPress
 
 1. Bật Apache và MySQL trong XAMPP. Với cấu hình đã gửi, địa chỉ quản trị là `http://localhost:8899/thanhbinh/wp-admin/`.
 2. Tải `dist/thanh-binh-orders-php74.zip`. Vào Plugin → Cài mới → Tải plugin lên, chọn ZIP này, cài rồi kích hoạt. Nếu WordPress nhận ra bản cũ đã có, chọn thay thế bản hiện tại bằng bản tải lên sau khi sao lưu website.
 3. Tải `dist/thanh-binh-theme-php74.zip`. Vào Giao diện → Thêm mới → Tải giao diện lên, chọn ZIP này, cài rồi kích hoạt. Nếu có bản cũ, chọn thay thế bằng bản tải lên.
-4. Kiểm tra plugin và theme đều có phiên bản **1.0.1**. Không cần đổi PHP hoặc sửa file XAMPP cho hai bộ cài này.
+4. Kiểm tra plugin và theme đều có phiên bản **1.1.0**. Không cần đổi PHP hoặc sửa file XAMPP cho hai bộ cài này.
 5. Nếu sản phẩm và bài viết đã có, giữ nguyên nội dung đó. Chỉ nhập `thanh-binh-content.xml` ở Công cụ → Nhập → WordPress khi cần nội dung khởi tạo. Sau đó lưu lại Cài đặt → Đường dẫn tĩnh.
 6. Mở trang chủ, kiểm tra sản phẩm và gửi một yêu cầu báo giá thử. Yêu cầu cần xuất hiện trong menu Yêu cầu báo giá; email chỉ hoạt động sau khi cấu hình SMTP và địa chỉ nhận.
 
-ZIP có hậu tố `-php74` chứa cùng mã nguồn với các ZIP chuẩn bản 1.0.1. Tên plugin/theme trong WordPress và tên thư mục bên trong ZIP không đổi, tránh tạo thêm một plugin hoặc theme trùng.
+ZIP có hậu tố `-php74` chứa cùng mã nguồn với các ZIP chuẩn bản 1.1.0. Tên plugin/theme trong WordPress và tên thư mục bên trong ZIP không đổi, tránh tạo thêm một plugin hoặc theme trùng.
 
 Ảnh và logo gốc vẫn cần được nhập qua Thư viện khi có tệp; bản cập nhật PHP không thêm ảnh thay thế giả làm logo công ty. PHP 7.4 đã hết hỗ trợ từ dự án PHP; bản này đáp ứng môi trường XAMPP hiện tại, không cập nhật bảo mật cho chính PHP/XAMPP.
 

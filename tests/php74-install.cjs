@@ -51,7 +51,7 @@ function assertInstalledFile(relative) {
       await page.waitForLoadState('networkidle');
     }
     assert.equal(run(['run','--rm','-T','cli','plugin','get','thanh-binh-orders','--field=status']),'active');
-    assert.equal(run(['run','--rm','-T','cli','plugin','get','thanh-binh-orders','--field=version']),'1.0.1');
+    assert.equal(run(['run','--rm','-T','cli','plugin','get','thanh-binh-orders','--field=version']),'1.1.0');
     assertInstalledFile('wp-content/plugins/thanh-binh-orders/thanh-binh-orders.php');
     console.log('PASS upload and activate plugin ZIP through WordPress on PHP 7.4.30');
     await page.goto(origin+'/wp-admin/theme-install.php?upload');
@@ -74,7 +74,7 @@ function assertInstalledFile(relative) {
       await page.goto(new URL(await themeLink.first().getAttribute('href'), origin).href);
     }
     assert.equal(run(['run','--rm','-T','cli','theme','get','thanh-binh','--field=status']),'active');
-    assert.equal(run(['run','--rm','-T','cli','theme','get','thanh-binh','--field=version']),'1.0.1');
+    assert.equal(run(['run','--rm','-T','cli','theme','get','thanh-binh','--field=version']),'1.1.0');
     assertInstalledFile('wp-content/themes/thanh-binh/style.css');
     console.log('PASS upload and activate theme ZIP through WordPress on PHP 7.4.30');
     await page.goto(origin+'/wp-admin/options-permalink.php');
